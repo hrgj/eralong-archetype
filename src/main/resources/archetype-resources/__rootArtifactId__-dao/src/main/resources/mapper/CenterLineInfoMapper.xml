@@ -1,0 +1,272 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.dao.mapper.CenterLineInfoMapper">
+
+    <resultMap id="BaseResultMap" type="${package}.dao.entity.CenterLineInfo">
+            <id property="id" column="id" />
+            <result property="origCenterCode" column="orig_center_code" />
+            <result property="origCenterName" column="orig_center_name" />
+            <result property="destCenterCode" column="dest_center_code" />
+            <result property="destCenterName" column="dest_center_name" />
+            <result property="lineName" column="line_name" />
+            <result property="lineCode" column="line_code" />
+            <result property="km" column="km" />
+            <result property="runTime" column="run_time" />
+            <result property="destProvinceCode" column="dest_province_code" />
+            <result property="destProvinceName" column="dest_province_name" />
+            <result property="destCityCode" column="dest_city_code" />
+            <result property="destCityName" column="dest_city_name" />
+            <result property="origProvinceCode" column="orig_province_code" />
+            <result property="origProvinceName" column="orig_province_name" />
+            <result property="origCityCode" column="orig_city_code" />
+            <result property="origCityName" column="orig_city_name" />
+            <result property="lineTypeCode" column="line_type_code" />
+            <result property="lineTypeName" column="line_type_name" />
+            <result property="createSiteCode" column="create_site_code" />
+            <result property="createSiteName" column="create_site_name" />
+            <result property="createUserCode" column="create_user_code" />
+            <result property="createUserName" column="create_user_name" />
+            <result property="createTime" column="create_time" />
+            <result property="versionNo" column="version_no" />
+            <result property="modifyUserCode" column="modify_user_code" />
+            <result property="modifyUserName" column="modify_user_name" />
+            <result property="modifyTime" column="modify_time" />
+            <result property="modifySiteCode" column="modify_site_code" />
+            <result property="modifySiteName" column="modify_site_name" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,orig_center_code,orig_center_name,dest_center_code,dest_center_name,line_name,
+        line_code,km,run_time,dest_province_code,dest_province_name,
+        dest_city_code,dest_city_name,orig_province_code,orig_province_name,orig_city_code,
+        orig_city_name,line_type_code,line_type_name,create_site_code,create_site_name,
+        create_user_code,create_user_name,create_time,version_no,modify_user_code,
+        modify_user_name,modify_time,modify_site_code,modify_site_name
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from center_line_info
+        where  id = ${symbol_pound}{id} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from center_line_info
+        where  id = ${symbol_pound}{id} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="${package}.dao.entity.CenterLineInfo" useGeneratedKeys="true">
+        insert into center_line_info
+        ( id,orig_center_code,orig_center_name,dest_center_code,dest_center_name,line_name,
+        line_code,km,run_time,dest_province_code,dest_province_name,
+        dest_city_code,dest_city_name,orig_province_code,orig_province_name,orig_city_code,
+        orig_city_name,line_type_code,line_type_name,create_site_code,create_site_name,
+        create_user_code,create_user_name,create_time,version_no,modify_user_code,
+        modify_user_name,modify_time,modify_site_code,modify_site_name)
+        values (${symbol_pound}{id},${symbol_pound}{origCenterCode},${symbol_pound}{origCenterName},${symbol_pound}{destCenterCode},${symbol_pound}{destCenterName},${symbol_pound}{lineName},
+        ${symbol_pound}{lineCode},${symbol_pound}{km},${symbol_pound}{runTime},${symbol_pound}{destProvinceCode},${symbol_pound}{destProvinceName},
+        ${symbol_pound}{destCityCode},${symbol_pound}{destCityName},${symbol_pound}{origProvinceCode},${symbol_pound}{origProvinceName},${symbol_pound}{origCityCode},
+        ${symbol_pound}{origCityName},${symbol_pound}{lineTypeCode},${symbol_pound}{lineTypeName},${symbol_pound}{createSiteCode},${symbol_pound}{createSiteName},
+        ${symbol_pound}{createUserCode},${symbol_pound}{createUserName},${symbol_pound}{createTime},${symbol_pound}{versionNo},${symbol_pound}{modifyUserCode},
+        ${symbol_pound}{modifyUserName},${symbol_pound}{modifyTime},${symbol_pound}{modifySiteCode},${symbol_pound}{modifySiteName})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.dao.entity.CenterLineInfo" useGeneratedKeys="true">
+        insert into center_line_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="origCenterCode != null">orig_center_code,</if>
+                <if test="origCenterName != null">orig_center_name,</if>
+                <if test="destCenterCode != null">dest_center_code,</if>
+                <if test="destCenterName != null">dest_center_name,</if>
+                <if test="lineName != null">line_name,</if>
+                <if test="lineCode != null">line_code,</if>
+                <if test="km != null">km,</if>
+                <if test="runTime != null">run_time,</if>
+                <if test="destProvinceCode != null">dest_province_code,</if>
+                <if test="destProvinceName != null">dest_province_name,</if>
+                <if test="destCityCode != null">dest_city_code,</if>
+                <if test="destCityName != null">dest_city_name,</if>
+                <if test="origProvinceCode != null">orig_province_code,</if>
+                <if test="origProvinceName != null">orig_province_name,</if>
+                <if test="origCityCode != null">orig_city_code,</if>
+                <if test="origCityName != null">orig_city_name,</if>
+                <if test="lineTypeCode != null">line_type_code,</if>
+                <if test="lineTypeName != null">line_type_name,</if>
+                <if test="createSiteCode != null">create_site_code,</if>
+                <if test="createSiteName != null">create_site_name,</if>
+                <if test="createUserCode != null">create_user_code,</if>
+                <if test="createUserName != null">create_user_name,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="versionNo != null">version_no,</if>
+                <if test="modifyUserCode != null">modify_user_code,</if>
+                <if test="modifyUserName != null">modify_user_name,</if>
+                <if test="modifyTime != null">modify_time,</if>
+                <if test="modifySiteCode != null">modify_site_code,</if>
+                <if test="modifySiteName != null">modify_site_name,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">${symbol_pound}{id},</if>
+                <if test="origCenterCode != null">${symbol_pound}{origCenterCode},</if>
+                <if test="origCenterName != null">${symbol_pound}{origCenterName},</if>
+                <if test="destCenterCode != null">${symbol_pound}{destCenterCode},</if>
+                <if test="destCenterName != null">${symbol_pound}{destCenterName},</if>
+                <if test="lineName != null">${symbol_pound}{lineName},</if>
+                <if test="lineCode != null">${symbol_pound}{lineCode},</if>
+                <if test="km != null">${symbol_pound}{km},</if>
+                <if test="runTime != null">${symbol_pound}{runTime},</if>
+                <if test="destProvinceCode != null">${symbol_pound}{destProvinceCode},</if>
+                <if test="destProvinceName != null">${symbol_pound}{destProvinceName},</if>
+                <if test="destCityCode != null">${symbol_pound}{destCityCode},</if>
+                <if test="destCityName != null">${symbol_pound}{destCityName},</if>
+                <if test="origProvinceCode != null">${symbol_pound}{origProvinceCode},</if>
+                <if test="origProvinceName != null">${symbol_pound}{origProvinceName},</if>
+                <if test="origCityCode != null">${symbol_pound}{origCityCode},</if>
+                <if test="origCityName != null">${symbol_pound}{origCityName},</if>
+                <if test="lineTypeCode != null">${symbol_pound}{lineTypeCode},</if>
+                <if test="lineTypeName != null">${symbol_pound}{lineTypeName},</if>
+                <if test="createSiteCode != null">${symbol_pound}{createSiteCode},</if>
+                <if test="createSiteName != null">${symbol_pound}{createSiteName},</if>
+                <if test="createUserCode != null">${symbol_pound}{createUserCode},</if>
+                <if test="createUserName != null">${symbol_pound}{createUserName},</if>
+                <if test="createTime != null">${symbol_pound}{createTime},</if>
+                <if test="versionNo != null">${symbol_pound}{versionNo},</if>
+                <if test="modifyUserCode != null">${symbol_pound}{modifyUserCode},</if>
+                <if test="modifyUserName != null">${symbol_pound}{modifyUserName},</if>
+                <if test="modifyTime != null">${symbol_pound}{modifyTime},</if>
+                <if test="modifySiteCode != null">${symbol_pound}{modifySiteCode},</if>
+                <if test="modifySiteName != null">${symbol_pound}{modifySiteName},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="${package}.dao.entity.CenterLineInfo">
+        update center_line_info
+        <set>
+                <if test="origCenterCode != null">
+                    orig_center_code = ${symbol_pound}{origCenterCode},
+                </if>
+                <if test="origCenterName != null">
+                    orig_center_name = ${symbol_pound}{origCenterName},
+                </if>
+                <if test="destCenterCode != null">
+                    dest_center_code = ${symbol_pound}{destCenterCode},
+                </if>
+                <if test="destCenterName != null">
+                    dest_center_name = ${symbol_pound}{destCenterName},
+                </if>
+                <if test="lineName != null">
+                    line_name = ${symbol_pound}{lineName},
+                </if>
+                <if test="lineCode != null">
+                    line_code = ${symbol_pound}{lineCode},
+                </if>
+                <if test="km != null">
+                    km = ${symbol_pound}{km},
+                </if>
+                <if test="runTime != null">
+                    run_time = ${symbol_pound}{runTime},
+                </if>
+                <if test="destProvinceCode != null">
+                    dest_province_code = ${symbol_pound}{destProvinceCode},
+                </if>
+                <if test="destProvinceName != null">
+                    dest_province_name = ${symbol_pound}{destProvinceName},
+                </if>
+                <if test="destCityCode != null">
+                    dest_city_code = ${symbol_pound}{destCityCode},
+                </if>
+                <if test="destCityName != null">
+                    dest_city_name = ${symbol_pound}{destCityName},
+                </if>
+                <if test="origProvinceCode != null">
+                    orig_province_code = ${symbol_pound}{origProvinceCode},
+                </if>
+                <if test="origProvinceName != null">
+                    orig_province_name = ${symbol_pound}{origProvinceName},
+                </if>
+                <if test="origCityCode != null">
+                    orig_city_code = ${symbol_pound}{origCityCode},
+                </if>
+                <if test="origCityName != null">
+                    orig_city_name = ${symbol_pound}{origCityName},
+                </if>
+                <if test="lineTypeCode != null">
+                    line_type_code = ${symbol_pound}{lineTypeCode},
+                </if>
+                <if test="lineTypeName != null">
+                    line_type_name = ${symbol_pound}{lineTypeName},
+                </if>
+                <if test="createSiteCode != null">
+                    create_site_code = ${symbol_pound}{createSiteCode},
+                </if>
+                <if test="createSiteName != null">
+                    create_site_name = ${symbol_pound}{createSiteName},
+                </if>
+                <if test="createUserCode != null">
+                    create_user_code = ${symbol_pound}{createUserCode},
+                </if>
+                <if test="createUserName != null">
+                    create_user_name = ${symbol_pound}{createUserName},
+                </if>
+                <if test="createTime != null">
+                    create_time = ${symbol_pound}{createTime},
+                </if>
+                <if test="versionNo != null">
+                    version_no = ${symbol_pound}{versionNo},
+                </if>
+                <if test="modifyUserCode != null">
+                    modify_user_code = ${symbol_pound}{modifyUserCode},
+                </if>
+                <if test="modifyUserName != null">
+                    modify_user_name = ${symbol_pound}{modifyUserName},
+                </if>
+                <if test="modifyTime != null">
+                    modify_time = ${symbol_pound}{modifyTime},
+                </if>
+                <if test="modifySiteCode != null">
+                    modify_site_code = ${symbol_pound}{modifySiteCode},
+                </if>
+                <if test="modifySiteName != null">
+                    modify_site_name = ${symbol_pound}{modifySiteName},
+                </if>
+        </set>
+        where   id = ${symbol_pound}{id} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="${package}.dao.entity.CenterLineInfo">
+        update center_line_info
+        set 
+            orig_center_code =  ${symbol_pound}{origCenterCode},
+            orig_center_name =  ${symbol_pound}{origCenterName},
+            dest_center_code =  ${symbol_pound}{destCenterCode},
+            dest_center_name =  ${symbol_pound}{destCenterName},
+            line_name =  ${symbol_pound}{lineName},
+            line_code =  ${symbol_pound}{lineCode},
+            km =  ${symbol_pound}{km},
+            run_time =  ${symbol_pound}{runTime},
+            dest_province_code =  ${symbol_pound}{destProvinceCode},
+            dest_province_name =  ${symbol_pound}{destProvinceName},
+            dest_city_code =  ${symbol_pound}{destCityCode},
+            dest_city_name =  ${symbol_pound}{destCityName},
+            orig_province_code =  ${symbol_pound}{origProvinceCode},
+            orig_province_name =  ${symbol_pound}{origProvinceName},
+            orig_city_code =  ${symbol_pound}{origCityCode},
+            orig_city_name =  ${symbol_pound}{origCityName},
+            line_type_code =  ${symbol_pound}{lineTypeCode},
+            line_type_name =  ${symbol_pound}{lineTypeName},
+            create_site_code =  ${symbol_pound}{createSiteCode},
+            create_site_name =  ${symbol_pound}{createSiteName},
+            create_user_code =  ${symbol_pound}{createUserCode},
+            create_user_name =  ${symbol_pound}{createUserName},
+            create_time =  ${symbol_pound}{createTime},
+            version_no =  ${symbol_pound}{versionNo},
+            modify_user_code =  ${symbol_pound}{modifyUserCode},
+            modify_user_name =  ${symbol_pound}{modifyUserName},
+            modify_time =  ${symbol_pound}{modifyTime},
+            modify_site_code =  ${symbol_pound}{modifySiteCode},
+            modify_site_name =  ${symbol_pound}{modifySiteName}
+        where   id = ${symbol_pound}{id} 
+    </update>
+</mapper>
