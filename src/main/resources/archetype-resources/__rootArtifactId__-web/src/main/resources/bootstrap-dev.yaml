@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: complex
+  cloud:
+    nacos:
+      config:
+        server-addr: 110.42.224.57
+        namespace: d19a3357-d61c-47e0-b342-a350df26aa9c
+        context-path: /nacos
+        file-extension: yaml
+        username: dev_nacos
+        password: dev2025
+        identity:
+          key: myIdentityKey
+          value: myIdentityValue

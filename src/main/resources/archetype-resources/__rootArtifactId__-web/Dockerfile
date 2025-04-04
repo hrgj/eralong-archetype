@@ -12,4 +12,10 @@ ENV JAVA_OPTS="-Xmx512m -Xms256m"
 
 COPY target/complex-web-0.0.1-SNAPSHOT.jar /app/complex-web.jar
 EXPOSE 8083
-CMD ["java", "-jar", "/app/complex-web.jar"]
+CMD ["java", \
+ "-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector", \
+ "-Dlog4j2.asyncLoggerWaitStrategy=TimeoutBlocking", \
+ "-Dlog4j2.disableJmx=true", \
+ "-Dlog4j2.enableThreadlocals=true", \
+ "-Dlog4j2.asyncQueueFullPolicy=Enqueue", \
+"-jar", "/app/complex-web.jar"]
